@@ -4,7 +4,7 @@
 namespace ZabbixComponent;
 
 
-class ZabbixTrigger extends ZabbixComponent
+class ZabbixTopTrigger extends ZabbixComponent
 {
 
     public function getComponent($componentId = null)
