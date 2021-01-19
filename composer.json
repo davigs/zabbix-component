@@ -1,0 +1,23 @@
+{
+    "name": "davigs/zabbix-component",
+    "description": "Componente para download de informações de instâncias Zabbix",
+    "require": {
+        "php": "^7.3",
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Davi Gomes",
+            "email": "davigomess@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ZabbixComponent\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
