@@ -1,21 +1,24 @@
 <?php
 
-
 namespace ZabbixComponent;
-
 
 class ZabbixTopTrigger extends ZabbixComponent
 {
-    public function getComponent($componentId = null)
+    public function getComponent($component = null)
     {
         $this->login();
+        $query = [
+            'from' => $this->startTime->format('Y-m-d H:i:s'),
+            'to' => $this->endTime->format('Y-m-d H:i:s'),
+            'profileIdx' => 'web.toptriggers.filter',
+        ];
+
+        if ($component !== null && is_array($component) === true) {
+            $query = array_merge($query, $component);
+        }
 
         $request = $this->httpClient->get('toptriggers.php', [
-            'query' => [
-                'from' => $this->startTime->format('Y-m-d H:i:s'),
-                'to' => $this->endTime->format('Y-m-d H:i:s'),
-                'profileIdx' => 'web.toptriggers.filter',
-            ],
+            'query' => $query,
         ])->getBody()->getContents();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
